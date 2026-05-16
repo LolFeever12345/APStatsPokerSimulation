@@ -14,6 +14,8 @@ void Simulation::runSimulation() {
         players[i].receiveCard(deck.drawCard());
         players[i].receiveCard(deck.drawCard());
     }
+
+    
     
     // Show each player's hand
     for(int i = 0; i < 9; i++) {

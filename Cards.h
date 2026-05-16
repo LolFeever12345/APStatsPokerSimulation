@@ -7,13 +7,13 @@
 class Card {
     public:
         Card();
-        Card(std::string suit, std::string rank);
+        Card(std::string suit, int rank);
         std::string getSuit() const;
-        std::string getRank() const;
+        int getRank() const;
         void displayCard() const;
     private:
         std::string suit;
-        std::string rank;
+        int rank;
 };
 
 #endif // CARDS_H

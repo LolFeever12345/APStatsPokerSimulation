@@ -1,6 +1,6 @@
 #include "Cards.h"
 
-Card::Card(std::string suit, std::string rank) {
+Card::Card(std::string suit, int rank) {
     this->suit = suit;
     this->rank = rank;
 }
@@ -9,7 +9,7 @@ std::string Card::getSuit() const {
     return suit;
 }
 
-std::string Card::getRank() const {
+int Card::getRank() const {
     return rank;
 }
 

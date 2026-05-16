@@ -8,6 +8,7 @@ class Simulation {
     public:
         Simulation();
         void runSimulation();
+        
     private:
         Deck deck;
         Player players[9]; // Assuming a maximum of 9 players in the simulation
