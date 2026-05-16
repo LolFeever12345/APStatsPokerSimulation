@@ -13,3 +13,11 @@ Deck::Deck() {
         }
     }
 }
+
+void Deck::shuffleDeck() {
+    for (int i = 0; i < 52; i++) {
+        int randomIndex = rand() % 52;
+        std::swap(deck[i], deck[randomIndex]);
+    }
+    topCardIndex = 0;
+}
