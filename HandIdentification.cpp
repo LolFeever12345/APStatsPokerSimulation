@@ -253,19 +253,24 @@ bool HandIdentification::isThreeOfAKind(const Card comhand[7]) {
 }
 
 bool HandIdentification::isTwoPair(const Card comhand[7]) {
+    bool foundFirstPair = false;
     for (int i = 0; i < 7; i++) {
         for (int j = i + 1; j < 7; j++) {
             if (comhand[i].getRank() == comhand[j].getRank()) {
-                for (int k = j + 1; k < 7; k++) {
-                    for (int l = k + 1; l < 7; l++) {
-                        if (comhand[k].getRank() == comhand[l].getRank() && comhand[k].getRank() != comhand[i].getRank()) {
-                            useComCards.push_back(comhand[i]);
-                            useComCards.push_back(comhand[j]);
-                            useComCards.push_back(comhand[k]);
-                            useComCards.push_back(comhand[l]);
-                            return true; // Found two pairs
-                        }
-                    }
+                useComCards.push_back(comhand[i]);
+                useComCards.push_back(comhand[j]);
+                foundFirstPair = true;
+                break; // Found the first pair, break to find the second pair
+            }
+        }
+    }
+    if(foundFirstPair) {
+        for (int i = 0; i < 7; i++) {
+            for (int j = i + 1; j < 7; j++) {
+                if (comhand[i].getRank() == comhand[j].getRank() && comhand[i].getRank() != useComCards[0].getRank()) {
+                    useComCards.push_back(comhand[i]);
+                    useComCards.push_back(comhand[j]);
+                    return true; // Found two pairs
                 }
             }
         }
