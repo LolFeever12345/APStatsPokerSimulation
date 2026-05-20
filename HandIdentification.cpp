@@ -122,6 +122,10 @@ bool HandIdentification::isFlush(const Card comhand[7]) {
                                             return false;
                                         }
 
+                                        for(int i = 0; i < 5; i++) {
+                                            useComCards.pop_back(); // Clear useComCards for the flush hand
+                                        }
+
                                         std::vector<Card> sortedCards = usedCards;
 
                                         std::sort(sortedCards.begin(), sortedCards.end(),
@@ -129,7 +133,9 @@ bool HandIdentification::isFlush(const Card comhand[7]) {
                                                     return a.getRank() > b.getRank(); // descending
                                                 });
                                         
-                                        
+                                        for(Card card: sortedCards) {
+                                            useComCards.push_back(card);
+                                        }
 
                                         return true;
                                     }
