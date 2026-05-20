@@ -5,6 +5,11 @@ Card::Card(std::string suit, int rank) {
     this->rank = rank;
 }
 
+Card::Card() {
+    suit = "";
+    rank = 0;
+}
+
 std::string Card::getSuit() const {
     return suit;
 }

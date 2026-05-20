@@ -1,8 +1,13 @@
-#include <HandIdentification.h>
+#include "HandIdentification.h"
 #include <vector>
 #include <iostream>
 #include <unordered_set>
 #include <algorithm>
+std::vector<Card> HandIdentification::useComCards;
+
+HandIdentification::HandIdentification() {
+    // Constructor logic if needed
+}
 
 int HandIdentification::identifyHand(const Player& player, const Card communityCards[5]) {
     Card comhand[7];

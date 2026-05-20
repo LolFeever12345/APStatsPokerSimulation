@@ -21,3 +21,7 @@ void Deck::shuffleDeck() {
     }
     topCardIndex = 0;
 }
+
+Card Deck::drawCard() {
+    return deck[topCardIndex++];
+}

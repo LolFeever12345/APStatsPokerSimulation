@@ -1,15 +1,7 @@
 #include "Player.h"
-#include <Cards.h>
+#include "Cards.h"
 
-Player::Player() {
-    // Initialize hand with default cards (could be empty or a placeholder)
-    hand[0] = Card();
-    hand[1] = Card();
-}
 
-Player::~Player() {
-    // Destructor logic if needed (not necessary in this case since we are not dynamically allocating memory)
-}
 
 void Player::receiveCard(const Card& card) {
     // Add the received card to the player's hand
@@ -21,3 +13,9 @@ void Player::receiveCard(const Card& card) {
         std::cout << "Hand is full! Cannot receive more cards." << std::endl;
     }
 }
+
+void Player::setHand(const Card& card1, const Card& card2) {
+    hand[0] = card1;
+    hand[1] = card2;
+}
+

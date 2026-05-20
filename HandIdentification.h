@@ -1,11 +1,12 @@
-#include <Player.h>
-#include <Cards.h>
+#include "Player.h"
+#include "Cards.h"
 #include <vector>
 #ifndef HANDIDENTIFICATION_H
 #define HANDIDENTIFICATION_H
 
 class HandIdentification {
     public:
+        HandIdentification();
         static int identifyHand(const Player& player, const Card communityCards[5]);
         static bool isStraightFlush(const Card comhand[7]);
         static bool isFlush(const Card comhand[7]);

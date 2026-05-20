@@ -1,6 +1,6 @@
-#include <Cards.h>
-#include <Deck.h>
-#include <Player.h>
+#include "Cards.h"
+#include "Deck.h"
+#include "Player.h"
 #ifndef SIMULATION_H
 #define SIMULATION_H
 
