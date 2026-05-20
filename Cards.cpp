@@ -21,3 +21,7 @@ int Card::getRank() const {
 void Card::displayCard() const {
     std::cout << rank << " of " << suit << std::endl;
 }
+
+bool Card::operator==(const Card& other) const {
+    return suit == other.suit && rank == other.rank;
+}

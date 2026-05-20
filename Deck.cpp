@@ -1,5 +1,8 @@
 #include "Deck.h"
 #include "Cards.h"
+#include <vector>
+#include <algorithm>
+#include <random>
 
 Deck::Deck() {
     std::string suits[] = {"Hearts", "Diamonds", "Clubs", "Spades"};
@@ -8,20 +11,29 @@ Deck::Deck() {
     int index = 0;
     for (const auto& suit : suits) {
         for (const auto& rank : ranks) {
-            deck[index] = Card(suit, rank);
-            index++;
+            deck.push_back(Card(suit, rank));
         }
     }
 }
 
 void Deck::shuffleDeck() {
-    for (int i = 0; i < 52; i++) {
-        int randomIndex = rand() % 52;
-        std::swap(deck[i], deck[randomIndex]);
-    }
-    topCardIndex = 0;
+    std::random_device rd;
+    std::mt19937 gen(rd());
+
+    std::shuffle(deck.begin(), deck.end(), gen);
 }
 
 Card Deck::drawCard() {
-    return deck[topCardIndex++];
+    Card card = deck.back();
+    deck.pop_back();
+    return card;
+}
+
+Card Deck::dealCard(Card hand) {
+    removeCard(hand);
+    return hand;
+}
+
+void Deck::removeCard(Card card) {
+    deck.erase(std::remove(deck.begin(), deck.end(), card), deck.end());
 }

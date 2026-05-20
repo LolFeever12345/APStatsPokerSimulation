@@ -1,4 +1,5 @@
 #include "Cards.h"
+#include <vector>
 #ifndef DECK_H
 #define DECK_H
 
@@ -7,9 +8,10 @@ class Deck {
         Deck();
         void shuffleDeck();
         Card drawCard();
+        Card dealCard(Card hand);
+        void removeCard(Card card);
     private:
-        Card deck[52];
-        int topCardIndex;
+        std::vector<Card> deck;
 };
 
 #endif // DECK_H

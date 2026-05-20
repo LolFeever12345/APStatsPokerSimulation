@@ -11,6 +11,7 @@ class Card {
         std::string getSuit() const;
         int getRank() const;
         void displayCard() const;
+        bool operator==(const Card& other) const;
     private:
         std::string suit;
         int rank;

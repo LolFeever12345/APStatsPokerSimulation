@@ -5,11 +5,11 @@
 #include "Cards.h"
 #include "Player.h"
 #include "Deck.h"
-#include "Simulation.h"
 #include "HandIdentification.h"
 
 
 int main() {
+    Deck mainDeck = Deck();
     Player player1;
     Player player2;
     Player player3;
@@ -19,7 +19,7 @@ int main() {
     Player player7;
     Player player8;
 
-    player1.setHand(Card("Hearts", 7), Card("Spades", 2));
+    player1.setHand(mainDeck.dealCard(Card("Hearts", 7)), mainDeck.dealCard(Card("Spades", 2)));
 
     Card communityCards[5] = {
         Card("Hearts", 7),
