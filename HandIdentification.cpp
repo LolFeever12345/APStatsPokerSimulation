@@ -53,6 +53,10 @@ int HandIdentification::identifyHand(const Player& player, const Card communityC
                                 if(isOnePair(comhand)) {
                                     handstr = 2;
                                 } else {
+                                    useComCards.clear();
+                                    for(Card card : comhand) {
+                                        useComCards.push_back(card);
+                                    }
                                     handstr = 1; // High card
                                 }
                             }

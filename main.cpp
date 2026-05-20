@@ -9,26 +9,38 @@
 
 
 int main() {
+    Player playerList[8];
     Deck mainDeck = Deck();
-    Player player1;
-    Player player2;
-    Player player3;
-    Player player4;
-    Player player5;
-    Player player6;
-    Player player7;
-    Player player8;
 
-    player1.setHand(mainDeck.dealCard(Card("Hearts", 7)), mainDeck.dealCard(Card("Spades", 2)));
+    mainDeck.shuffleDeck();
 
     Card communityCards[5] = {
-        Card("Hearts", 7),
-        Card("Diamonds", 7),
-        Card("Clubs", 7),
-        Card("Spades", 3),
-        Card("Hearts", 2)
+        mainDeck.drawCard(),
+        mainDeck.drawCard(),
+        mainDeck.drawCard(),
+        mainDeck.drawCard(),
+        mainDeck.drawCard()
     };
 
-    int handStrength = HandIdentification::identifyHand(player1, communityCards);
-    std::cout << "Player 1's hand strength: " << handStrength << std::endl;
+    playerList[0].receiveCard(mainDeck.dealCard(Card("Hearts", 6)));
+    playerList[0].receiveCard(mainDeck.dealCard(Card("Spades", 1)));
+
+    for(int i = 1; i < 8; i++) {
+        playerList[i].receiveCard(mainDeck.drawCard());
+        playerList[i].receiveCard(mainDeck.drawCard());
+    }
+
+    for(int j = 0; j < 5; j++) {
+        communityCards[j].displayCard();
+    }
+
+    for(int i = 0; i < 8; i++) {
+        int handStrength = HandIdentification::identifyHand(playerList[i], communityCards);
+        std::cout << "Player " << i + 1 << " has hand strength: " << handStrength << std::endl;
+        std::cout << "Player " << i + 1 << "'s hand: ";
+        playerList[i].hand[0].displayCard();
+        playerList[i].hand[1].displayCard();
+    }
+
+
 }

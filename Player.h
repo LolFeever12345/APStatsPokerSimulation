@@ -4,6 +4,7 @@
 
 class Player {
     public:
+        
         void receiveCard(const Card& card);
         void setHand(const Card& card1, const Card& card2);
         Card hand[2];
