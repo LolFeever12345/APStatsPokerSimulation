@@ -17,7 +17,7 @@ class HandIdentification {
         static bool isTwoPair(const Card comhand[7]);
         static bool isOnePair(const Card comhand[7]);
         static std::vector<Card> useComCards;
-
+        static bool isInPlayerHand(const Player& player, const Card& card);
 };
 
 #endif // HANDIDENTIFICATION_H

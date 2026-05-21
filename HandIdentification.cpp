@@ -78,6 +78,18 @@ int HandIdentification::identifyHand(const Player& player, const Card communityC
             Pair.push_back(useComCards[i]);
         }
         output = handstr*10000 + ThreeOfAKind[0].getRank()*200 + Pair[0].getRank();
+    }else if(handstr == 6){
+        int lowestRank = useComCards[4].getRank();
+        for(Card card:useComCards){
+            for(int i = 0;i<2;i++){
+                if(isInPlayerHand(player, card)){
+                    if(card.getRank() > highcard && card.getRank() > lowestRank){
+                        highcard = card.getRank();
+                    }
+                }
+            }
+        }
+        output = handstr*10000 + highcard*200;
     }else{
         for(Card card : useComCards) {
             if(card.getRank() > highcard) {
@@ -289,4 +301,13 @@ bool HandIdentification::isOnePair(const Card comhand[7]) {
         }
     }
     return false; // Placeholder return value
+}
+
+bool HandIdentification::isInPlayerHand(const Player& player, const Card& card) {
+    for(int i = 0; i < 2; i++) {
+        if(player.hand[i] == card) {
+            return true; // Card is in player's hand
+        }
+    }
+    return false; // Card is not in player's hand
 }

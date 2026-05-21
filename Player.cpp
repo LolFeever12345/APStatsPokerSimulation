@@ -19,3 +19,8 @@ void Player::setHand(const Card& card1, const Card& card2) {
     hand[1] = card2;
 }
 
+void Player::emptyHand() {
+    hand[0] = Card(); // Reset to default card (empty)
+    hand[1] = Card(); // Reset to default card (empty)
+}
+

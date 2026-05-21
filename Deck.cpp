@@ -37,3 +37,15 @@ Card Deck::dealCard(Card hand) {
 void Deck::removeCard(Card card) {
     deck.erase(std::remove(deck.begin(), deck.end(), card), deck.end());
 }
+
+void Deck::refill() {
+    deck.clear();
+    std::string suits[] = {"Hearts", "Diamonds", "Clubs", "Spades"};
+    int ranks[] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13};
+    
+    for (const auto& suit : suits) {
+        for (const auto& rank : ranks) {
+            deck.push_back(Card(suit, rank));
+        }
+    }
+}
