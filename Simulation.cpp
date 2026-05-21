@@ -46,12 +46,16 @@ float Simulation::runSimulation(int numSimulations) {
             communityCards[j].displayCard();
         }
 
+        std::cout << "-----------------------------" << std::endl;
+
         for (size_t i = 0; i < players.size(); i++) {
             int handStrength = HandIdentification::identifyHand(players[i], communityCards);
             for(int j = 0; j < 2; j++) {
                 std::cout << "Player " << i << " Hand Card " << j << ": ";
                 players[i].hand[j].displayCard();
             }
+            std::cout << "Hand Strength: " << handStrength << std::endl;
+            std::cout << "-----------------------------" << std::endl;
             if (handStrength > bestHandStrength) {
                 bestHandStrength = handStrength;
                 winningPlayerIndex = i;

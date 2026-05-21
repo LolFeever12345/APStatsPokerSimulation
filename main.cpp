@@ -10,6 +10,12 @@
 
 
 int main() {
-    Simulation sim;
-    std::cout << sim.runSimulation(1) << std::endl;
+    // Simulation sim;
+    // std::cout << sim.runSimulation(1) << std::endl;
+    Deck deck;
+    for(int i = 0; i < 52; i++) {
+        Card card = deck.drawCard();
+        card.displayCard();
+    }
+    std::cout<<deck.deck.size()<<std::endl; // Should be 0 after drawing all cards
 }
