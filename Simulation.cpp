@@ -10,36 +10,40 @@
 
 Simulation::Simulation() {
     // Constructor logic if needed
-    for(int i = 0; i < 8; i++) {
-        players.push_back(Player());
-    }
     Deck mainDeck = Deck();
 }
 
-float Simulation::runSimulation(int numSimulations) {
+float Simulation::runSimulation(int numSimulations, int numPlayers) {
     int player1Wins = 0;
 
     for (int sim = 0; sim < numSimulations; sim++) {
-        for(Player& player : players) {
-            player.emptyHand(); // Clear player's hand for the new simulation
+        int bestHandStrength = 0;
+        players.clear();
+        for(int i = 0; i < numPlayers; i++) {
+            players.push_back(Player());
         }
         mainDeck.refill();
         mainDeck.shuffleDeck();
 
-        Card communityCards[5];
-        for (int i = 0; i < 5; i++) {
-            communityCards[i] = mainDeck.drawCard();
-        }
-
         players[0].receiveCard(mainDeck.dealCard(Card("Hearts", 6)));
         players[0].receiveCard(mainDeck.dealCard(Card("Spades", 1)));
 
-        for(int i = 1; i < 8; i++) {
+        for(int i = 1; i < numPlayers; i++) {
             players[i].receiveCard(mainDeck.drawCard());
             players[i].receiveCard(mainDeck.drawCard());
         }
 
-        int bestHandStrength = 0;
+        Card communityCards[5];
+        mainDeck.Burn(); // Burn the first card
+        for (int i = 0; i < 3; i++) {
+            communityCards[i] = mainDeck.drawCard();
+        }
+
+        mainDeck.Burn(); // Burn the first card
+        communityCards[3] = mainDeck.drawCard();
+        mainDeck.Burn(); // Burn the second card
+        communityCards[4] = mainDeck.drawCard();
+
         int winningPlayerIndex = -1;
         for (int j = 0; j < 5; j++) {
             std::cout << "Community Card " << j + 1 << ": ";
@@ -50,7 +54,7 @@ float Simulation::runSimulation(int numSimulations) {
 
         for (size_t i = 0; i < players.size(); i++) {
             int handStrength = HandIdentification::identifyHand(players[i], communityCards);
-            for(int j = 0; j < 2; j++) {
+            for(int j = 0; j < numPlayers; j++) {
                 std::cout << "Player " << i << " Hand Card " << j << ": ";
                 players[i].hand[j].displayCard();
             }

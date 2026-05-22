@@ -90,6 +90,33 @@ int HandIdentification::identifyHand(const Player& player, const Card communityC
             }
         }
         output = handstr*10000 + highcard*200;
+    }else if(handstr == 1){
+        std::vector<Card> sortedCards = useComCards;
+        std::sort(sortedCards.begin(), sortedCards.end(), [](const Card& a, const Card& b) {
+            return a.getRank() > b.getRank();
+        });
+        output = handstr*10000 + sortedCards[0].getRank()*200 + sortedCards[1].getRank()*180 + sortedCards[2].getRank()*160 + sortedCards[3].getRank()*140 + sortedCards[4].getRank()*120;
+    }else if(handstr == 2 || handstr == 3 || handstr ==4){
+        std::vector<Card> possibleKickers;
+        int kicker = 0;
+        for(int i = 0; i <2;i++){
+            bool inUseComCards = false;
+            for(Card card : useComCards) {
+                if(player.hand[i] == card) {
+                    inUseComCards = true;
+                    break;
+                }
+            }
+            if(!inUseComCards) {
+                possibleKickers.push_back(player.hand[i]);
+            }
+        }
+        for(Card card : possibleKickers) {
+            if(card.getRank() > kicker) {
+                kicker = card.getRank();
+            }
+        }
+        output = handstr*10000 + useComCards[0].getRank()*200 + kicker;
     }else{
         for(Card card : useComCards) {
             if(card.getRank() > highcard) {

@@ -11,6 +11,7 @@ class Deck {
         Card dealCard(Card hand);
         void removeCard(Card card);
         void refill();
+        void Burn();
         std::vector<Card> deck;
 };
 

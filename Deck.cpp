@@ -49,3 +49,9 @@ void Deck::refill() {
         }
     }
 }
+
+void Deck::Burn() {
+    if (!deck.empty()) {
+        deck.pop_back();
+    }
+}

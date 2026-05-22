@@ -10,12 +10,17 @@
 
 
 int main() {
-    // Simulation sim;
-    // std::cout << sim.runSimulation(1) << std::endl;
-    Deck deck;
-    for(int i = 0; i < 52; i++) {
-        Card card = deck.drawCard();
-        card.displayCard();
-    }
-    std::cout<<deck.deck.size()<<std::endl; // Should be 0 after drawing all cards
+    Simulation sim;
+    std::cout << sim.runSimulation(100,8) << std::endl;
+    // Deck deck;
+    // // deck.shuffleDeck();
+    // Card t1 = deck.dealCard(Card("Hearts", 6));
+    // Card t2 = deck.dealCard(Card("Spades", 1));
+    // t1.displayCard();
+    // t2.displayCard();
+    // for(int i = 0; i < 52; i++) {
+    //     Card card = deck.drawCard();
+    //     card.displayCard();
+    // }
+    // std::cout<<deck.deck.size()<<std::endl; // Should be 0 after drawing all cards
 }
