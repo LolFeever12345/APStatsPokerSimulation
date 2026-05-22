@@ -11,7 +11,7 @@
 class Simulation {
     public:
         Simulation();
-        float runSimulation(int numSimulations = 1000, int numPlayers = 8);
+        float runSimulation(int numSimulations = 1000);
     private:
         std::vector<Player> players;
         Deck mainDeck;

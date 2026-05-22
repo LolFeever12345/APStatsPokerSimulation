@@ -11,7 +11,7 @@
 
 int main() {
     Simulation sim;
-    std::cout << sim.runSimulation(100,8) << std::endl;
+    std::cout << sim.runSimulation(100000) << std::endl;
     // Deck deck;
     // // deck.shuffleDeck();
     // Card t1 = deck.dealCard(Card("Hearts", 6));
